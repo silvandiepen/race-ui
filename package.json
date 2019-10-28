@@ -1,0 +1,25 @@
+{
+  "name": "race",
+  "version": "1.0.0",
+  "description": "Race",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test",
+    "build": "npm run build:sass && npm run build:js && npm run build:html",
+    "build:js": "babel src -d dist",
+    "build:html": "pug src/index.pug --out dist",
+    "build:sass": "sass src/app.scss dist/app.css"
+  },
+  "author": "Sil van Diepen",
+  "license": "ISC",
+  "devDependencies": {
+    "pug": "^2.0.4",
+    "sass": "^1.23.1",
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3"
+  },
+  "dependencies": {
+    "pug-cli": "^1.0.0-alpha6"
+  }
+}
