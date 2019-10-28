@@ -1,4 +1,4 @@
-const paddle = document.querySelector(".pedal");
+const pedal = document.querySelector(".pedal");
 
 function handleOrientation(event) {
   //   const orientation = {
