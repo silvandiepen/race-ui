@@ -28,7 +28,6 @@ button.addEventListener("click", () => {
   button.classList.add("button--clicked");
   document.body.classList.add("initialized");
   if (typeof DeviceOrientationEvent.requestPermission === "function") {
-    alert("yeah gonna check");
     DeviceOrientationEvent.requestPermission()
       .then(permissionState => {
         if (permissionState === "granted") {

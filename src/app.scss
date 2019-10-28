@@ -15,7 +15,7 @@ html {
   height: 50vh;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(2);
   border-radius: 25vw;
   position: fixed;
   opacity: 0.25;
@@ -34,6 +34,7 @@ html {
   }
   .initialized & {
     opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
   }
 }
 
@@ -49,6 +50,7 @@ html {
   -webkit-appearance: none;
   text-align: center;
   border: 0px solid;
+  padding: 0;
   line-height: 20vmax;
   transform: translate(-50%, -50%) scale(1);
   opacity: 1;
