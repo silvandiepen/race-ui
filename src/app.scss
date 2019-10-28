@@ -119,6 +119,7 @@ html {
     [data-stage="1"] & {
       &:nth-child(1) {
         --light: 255;
+        --color: red;
         top: 25%;
       }
     }
