@@ -85,6 +85,9 @@ html {
   [data-stage] & {
     transform: translate(-50%, -50%) scale(1);
   }
+  [data-stage="4"] & {
+    transform: translate(-50%, -50%) scale(0);
+  }
   span {
     width: 6vmin;
     height: 6vmin;

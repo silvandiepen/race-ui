@@ -37,7 +37,10 @@ function startPedal() {
   setTimeout(() => {
     document.body.setAttribute("data-stage", 4);
     document.body.classList.add("initialized");
-    handleOrientation(e);
+
+    window.addEventListener("deviceorientation", e => {
+      handleOrientation(e);
+    });
   }, 3000);
 }
 
@@ -47,15 +50,11 @@ button.addEventListener("click", () => {
     DeviceOrientationEvent.requestPermission()
       .then(permissionState => {
         if (permissionState === "granted") {
-          window.addEventListener("deviceorientation", e => {
-            startPedal();
-          });
+          startPedal();
         }
       })
       .catch(console.error);
   } else {
-    window.addEventListener("deviceorientation", e => {
-      startPedal();
-    });
+    startPedal();
   }
 });
