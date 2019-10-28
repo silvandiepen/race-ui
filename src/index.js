@@ -1,14 +1,44 @@
 const pedal = document.querySelector(".pedal");
 const button = document.querySelector("#go");
+const socket = new WebSocket(
+  "wss://javascript.info/article/websocket/demo/hello"
+);
+
+socket.onopen = function(e) {
+  button.addEventListener("click", () => {
+    button.classList.add("button--clicked");
+    if (typeof DeviceOrientationEvent.requestPermission === "function") {
+      DeviceOrientationEvent.requestPermission()
+        .then(permissionState => {
+          if (permissionState === "granted") {
+            startPedal();
+          }
+        })
+        .catch(console.error);
+    } else {
+      startPedal();
+    }
+  });
+  //   socket.send("My name is John");
+};
+
+socket.onclose = function(event) {
+  if (event.wasClean) {
+    alert(
+      `[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`
+    );
+  } else {
+    // e.g. server process killed or network down
+    // event.code is usually 1006 in this case
+    alert("[close] Connection died");
+  }
+};
+
+socket.onerror = function(error) {
+  alert(`[error] ${error.message}`);
+};
 
 function handleOrientation(e) {
-  //   const orientation = {
-  //     absolute: event.absolute,
-  //     alpha: event.alpha,
-  //     beta: event.beta,
-  //     gamma: event.gamma
-  //   };
-
   // Check if rotation is between 90 and 0 and Round it off to a number between 0 and 255.
   const rotation = Math.round(
     ((100 / 90) * (e.beta > 90 ? 90 : e.beta < 0 ? 0 : e.beta) - 100) * -1
@@ -43,18 +73,3 @@ function startPedal() {
     });
   }, 3000);
 }
-
-button.addEventListener("click", () => {
-  button.classList.add("button--clicked");
-  if (typeof DeviceOrientationEvent.requestPermission === "function") {
-    DeviceOrientationEvent.requestPermission()
-      .then(permissionState => {
-        if (permissionState === "granted") {
-          startPedal();
-        }
-      })
-      .catch(console.error);
-  } else {
-    startPedal();
-  }
-});
