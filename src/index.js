@@ -22,7 +22,8 @@ function handleOrientation(event) {
   // Do stuff with the new orientation data
 }
 document.addEventListener("DOMContentLoaded", function() {
-  console.log("Yeah.. lets go!  fdasfas");
+  console.log("Yeah.. lets go!");
+  alert(typeof DeviceOrientationEvent.requestPermission);
   if (typeof DeviceOrientationEvent.requestPermission === "function") {
     DeviceOrientationEvent.requestPermission()
       .then(permissionState => {
