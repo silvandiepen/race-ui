@@ -38,7 +38,7 @@ html {
   }
   .initialized & {
     opacity: 1;
-    transform: translate(-50%, calc(1% * var(--rotation))) scale(1);
+    transform: translate(-50%, calc((1% * var(--rotation))- 50%)) scale(1);
   }
 }
 
