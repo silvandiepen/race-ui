@@ -1,6 +1,6 @@
 const pedal = document.querySelector(".pedal");
 
-function handleOrientation(event) {
+function handleOrientation(e) {
   //   const orientation = {
   //     absolute: event.absolute,
   //     alpha: event.alpha,
@@ -10,9 +10,7 @@ function handleOrientation(event) {
 
   // Check if rotation is between 90 and 0 and Round it off to a number between 0 and 255.
   const rotation = Math.round(
-    ((100 / 90) * (event.beta > 90 ? 90 : event.beta < 0 ? 0 : event.beta) -
-      100) *
-      -1
+    ((100 / 90) * (e.beta > 90 ? 90 : e.beta < 0 ? 0 : e.beta) - 100) * -1
   );
 
   pedal.setAttribute("data-rotation", rotation);
@@ -23,12 +21,14 @@ function handleOrientation(event) {
 }
 document.addEventListener("DOMContentLoaded", function() {
   console.log("Yeah.. lets go!");
-  alert(typeof DeviceOrientationEvent.requestPermission);
   if (typeof DeviceOrientationEvent.requestPermission === "function") {
+    alert("yeah gonna check");
     DeviceOrientationEvent.requestPermission()
       .then(permissionState => {
         if (permissionState === "granted") {
-          window.addEventListener("deviceorientation", handleOrientation, true);
+          window.addEventListener("deviceorientation", e => {
+            handleOrientation(e);
+          });
         }
       })
       .catch(console.error);
