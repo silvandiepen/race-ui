@@ -17,12 +17,10 @@ html {
   height: 50vmin;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(2);
+  transform: translate(-50%, -50%) scale(1);
   border-radius: 25vw;
   position: fixed;
-  opacity: 0.25;
   border: 0.5rem solid white;
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 
   h2 {
     bottom: var(--rotation, 0);
@@ -38,8 +36,16 @@ html {
   }
   .initialized & {
     opacity: 1;
-    // transform: translate(-50%, calc((1% * var(--rotation))- 50%)) scale(1);
-    transform: translate(-50%, calc((1% * var(--rotation)) - 50%)) scale(1);
+    transform: translateY(calc((1% * var(--rotation)) - 50%));
+  }
+  &__wrapper {
+    opacity: 0.25;
+    transform: translate(-50%, -50%) scale(2);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    .initialized & {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
   }
 }
 
