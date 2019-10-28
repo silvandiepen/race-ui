@@ -25,9 +25,9 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function startPedal() {
-  setTimeout(() => {
-    document.body.setAttribute("data-stage", 1);
-  }, 0);
+  //   setTimeout(() => {
+  document.body.setAttribute("data-stage", 1);
+  //   }, 0);
   setTimeout(() => {
     document.body.setAttribute("data-stage", 2);
   }, 1000);
@@ -54,12 +54,8 @@ button.addEventListener("click", () => {
       })
       .catch(console.error);
   } else {
-    window.addEventListener(
-      "deviceorientation",
-      e => {
-        startPedal();
-      },
-      true
-    );
+    window.addEventListener("deviceorientation", e => {
+      startPedal();
+    });
   }
 });

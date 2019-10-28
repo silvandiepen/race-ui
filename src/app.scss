@@ -79,7 +79,12 @@ html {
   top: 50%;
   left: 50%;
   z-index: 10;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(0);
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  [data-stage] & {
+    transform: translate(-50%, -50%) scale(1);
+  }
   span {
     width: 6vmin;
     height: 6vmin;
