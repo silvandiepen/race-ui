@@ -18,6 +18,7 @@ html {
   transform: translate(-50%, -50%);
   border-radius: 25vw;
   position: fixed;
+  opacity: 0.25;
   border: 0.5rem solid white;
   h2 {
     bottom: var(--rotation, 0);
@@ -30,5 +31,30 @@ html {
     &[data-rotation="#{$i}"] {
       background-color: mix(green, orange, $weight: (100% / 100 * $i));
     }
+  }
+  .initialized & {
+    opacity: 1;
+  }
+}
+
+.button {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  height: 20vmax;
+  width: 20vmax;
+  background-color: orange;
+  border-radius: 50%;
+  font-size: 8vmax;
+  -webkit-appearance: none;
+  text-align: center;
+  border: 0px solid;
+  line-height: 20vmax;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  &--clicked {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
   }
 }
