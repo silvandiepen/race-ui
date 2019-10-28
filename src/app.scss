@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Staatliches&display=swap");
 body,
 html {
   margin: 0;
@@ -5,6 +6,7 @@ html {
   background-color: #222;
   color: #fff;
   font-size: 16px;
+  font-family: Staatliches, sans-serif;
 }
 
 .pedal {
@@ -20,12 +22,14 @@ html {
   position: fixed;
   opacity: 0.25;
   border: 0.5rem solid white;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+
   h2 {
     bottom: var(--rotation, 0);
     font-size: 12vw;
     width: 100%;
     text-align: center;
-    font-family: Arial;
+    font-family: Staatliches, sans-serif;
   }
   @for $i from 0 through 100 {
     &[data-rotation="#{$i}"] {
@@ -48,6 +52,9 @@ html {
   border-radius: 50%;
   font-size: 8vmax;
   -webkit-appearance: none;
+  text-transform: uppercase;
+  font-family: Staatliches, sans-serif;
+
   text-align: center;
   border: 0px solid;
   padding: 0;

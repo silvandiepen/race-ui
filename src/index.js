@@ -38,6 +38,12 @@ button.addEventListener("click", () => {
       })
       .catch(console.error);
   } else {
-    window.addEventListener("deviceorientation", handleOrientation, true);
+    window.addEventListener(
+      "deviceorientation",
+      e => {
+        handleOrientation(e);
+      },
+      true
+    );
   }
 });
