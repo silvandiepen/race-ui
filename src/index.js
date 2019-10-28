@@ -68,9 +68,13 @@ function startPedal() {
     document.body.setAttribute("data-stage", 4);
     document.body.classList.add("initialized");
 
-    window.addEventListener("deviceorientation", e => {
-      handleOrientation(e);
-    });
+    if (window.DeviceOrientationEvent) {
+      window.addEventListener("deviceorientation", e => {
+        handleOrientation(e);
+      });
+    } else {
+      console.log(" go do something with the pointer");
+    }
   }, 3000);
 }
 
