@@ -21,6 +21,7 @@ function initSocket() {
 }
 
 function sendData(msg) {
+  console.log(msg, window.location.hash);
   websocket.send(msg);
 }
 
