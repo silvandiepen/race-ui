@@ -1,14 +1,21 @@
 const paddle = document.querySelector(".paddle");
 
 function handleOrientation(event) {
-  var absolute = event.absolute;
-  var alpha = event.alpha;
-  var beta = event.beta;
-  var gamma = event.gamma;
+  const orientation = {
+    absolute: event.absolute,
+    alpha: event.alpha,
+    beta: event.beta,
+    gamma: event.gamma
+  };
 
-  paddle.innerHTML = `<p>${absolute}</p><p>${alpha}</p><p>${beta}</p><p>${gamma}</p>`;
+  console.log(orientation);
+
+  paddle.innerHTML = `<p>${orientation.absolute}</p><p>${orientation.alpha}</p><p>${orientation.beta}</p><p>${orientation.gamma}</p>`;
 
   // Do stuff with the new orientation data
 }
 
-window.addEventListener("deviceorientation", handleOrientation, true);
+document.addEventListener("DOMContentLoaded", function() {
+  console.log("Yeah.. lets go!");
+  window.addEventListener("deviceorientation", handleOrientation, true);
+});

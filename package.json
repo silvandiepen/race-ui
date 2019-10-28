@@ -8,7 +8,11 @@
     "build": "npm run build:sass && npm run build:js && npm run build:html",
     "build:js": "babel src -d dist",
     "build:html": "pug src/index.pug --out dist",
-    "build:sass": "sass src/app.scss dist/app.css"
+    "build:sass": "sass src/app.scss dist/app.css",
+    "dev": "npm-watch"
+  },
+  "watch": {
+    "build": "src/*"
   },
   "author": "Sil van Diepen",
   "license": "ISC",
@@ -20,6 +24,7 @@
     "@babel/preset-env": "^7.6.3"
   },
   "dependencies": {
+    "npm-watch": "^0.6.0",
     "pug-cli": "^1.0.0-alpha6"
   }
 }
