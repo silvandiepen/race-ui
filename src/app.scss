@@ -13,8 +13,8 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50vw;
-  height: 50vh;
+  width: 30vmin;
+  height: 50vmin;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(2);
@@ -46,11 +46,12 @@ html {
   position: fixed;
   top: 50%;
   left: 50%;
-  height: 20vmax;
-  width: 20vmax;
+  height: 20vmin;
+  width: 20vmin;
   background-color: orange;
   border-radius: 50%;
-  font-size: 8vmax;
+  font-size: 8vmin;
+  z-index: 12;
   -webkit-appearance: none;
   text-transform: uppercase;
   font-family: Staatliches, sans-serif;
@@ -58,12 +59,65 @@ html {
   text-align: center;
   border: 0px solid;
   padding: 0;
-  line-height: 20vmax;
+  line-height: 20vmin;
   transform: translate(-50%, -50%) scale(1);
   opacity: 1;
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
   &--clicked {
     opacity: 0;
     transform: translate(-50%, -50%) scale(0);
+  }
+}
+
+.trafficlight {
+  width: 15vmin;
+  height: 30vmin;
+  border: 8px solid white;
+  background-color: #222;
+  border-radius: 15vmin;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  transform: translate(-50%, -50%);
+  span {
+    width: 6vmin;
+    height: 6vmin;
+    position: absolute;
+    display: block;
+    left: 50%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    --color: 0;
+    --light: #333;
+    background-color: var(--color, red);
+    box-shadow: 0 0 6vmin 0 var(--color),
+      0 0 3vmin 0 rgba(var(--light), var(--light), var(--light), 1),
+      0 0 12vmin 0 var(--color);
+    background-image: radial-gradient(
+      rgba(var(--light), var(--light), var(--light), 0.85),
+      rgba(var(--light), var(--light), var(--light), 0.1)
+    );
+    [data-stage="1"] & {
+      &:nth-child(1) {
+        --light: #fff;
+        --color: red;
+        top: 25%;
+      }
+    }
+    [data-stage="2"] & {
+      &:nth-child(2) {
+        --light: #fff;
+        --color: orange;
+        top: 50%;
+      }
+    }
+    [data-stage="3"] & {
+      &:nth-child(3) {
+        --light: #fff;
+        --color: green;
+        top: 75%;
+      }
+    }
   }
 }

@@ -24,15 +24,31 @@ document.addEventListener("DOMContentLoaded", function() {
   console.log("Yeah.. lets go!");
 });
 
+function startPedal() {
+  setTimeout(() => {
+    document.body.setAttribute("data-stage", 1);
+  }, 0);
+  setTimeout(() => {
+    document.body.setAttribute("data-stage", 2);
+  }, 1000);
+  setTimeout(() => {
+    document.body.setAttribute("data-stage", 3);
+  }, 2000);
+  setTimeout(() => {
+    document.body.setAttribute("data-stage", 4);
+    document.body.classList.add("initialized");
+    handleOrientation(e);
+  }, 3000);
+}
+
 button.addEventListener("click", () => {
   button.classList.add("button--clicked");
-  document.body.classList.add("initialized");
   if (typeof DeviceOrientationEvent.requestPermission === "function") {
     DeviceOrientationEvent.requestPermission()
       .then(permissionState => {
         if (permissionState === "granted") {
           window.addEventListener("deviceorientation", e => {
-            handleOrientation(e);
+            startPedal();
           });
         }
       })
@@ -41,7 +57,7 @@ button.addEventListener("click", () => {
     window.addEventListener(
       "deviceorientation",
       e => {
-        handleOrientation(e);
+        startPedal();
       },
       true
     );
