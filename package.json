@@ -9,7 +9,8 @@
     "build:js": "babel src -d dist",
     "build:html": "pug src/index.pug --out dist",
     "build:sass": "sass src/app.scss dist/app.css",
-    "dev": "npm-watch"
+    "watch": "npm-watch",
+    "serve": "http-server ./dist"
   },
   "watch": {
     "build": "src/*"
@@ -24,6 +25,7 @@
     "@babel/preset-env": "^7.6.3"
   },
   "dependencies": {
+    "http-server": "^0.11.1",
     "npm-watch": "^0.6.0",
     "pug-cli": "^1.0.0-alpha6"
   }
