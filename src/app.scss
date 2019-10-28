@@ -38,7 +38,8 @@ html {
   }
   .initialized & {
     opacity: 1;
-    transform: translate(-50%, calc((1% * var(--rotation))- 50%)) scale(1);
+    // transform: translate(-50%, calc((1% * var(--rotation))- 50%)) scale(1);
+    transform: translate(-50%, calc((1% * var(--rotation)) - 50%)) scale(1);
   }
 }
 
@@ -108,21 +109,20 @@ html {
     );
     [data-stage="1"] & {
       &:nth-child(1) {
-        --light: #fff;
-        --color: red;
+        --light: 255;
         top: 25%;
       }
     }
     [data-stage="2"] & {
       &:nth-child(2) {
-        --light: #fff;
+        --light: 255;
         --color: orange;
         top: 50%;
       }
     }
     [data-stage="3"] & {
       &:nth-child(3) {
-        --light: #fff;
+        --light: 255;
         --color: green;
         top: 75%;
       }
