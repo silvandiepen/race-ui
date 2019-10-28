@@ -36,7 +36,7 @@ html {
   }
   .initialized & {
     opacity: 1;
-    transform: translateY(calc((1% * var(--rotation)) + 50%));
+    transform: translate(-50%, calc(100% / var(--rotation)));
   }
   &__wrapper {
     position: fixed;
