@@ -1,4 +1,5 @@
 const pedal = document.querySelector(".pedal");
+const button = document.querySelector("#go");
 
 function handleOrientation(e) {
   //   const orientation = {
@@ -21,6 +22,9 @@ function handleOrientation(e) {
 }
 document.addEventListener("DOMContentLoaded", function() {
   console.log("Yeah.. lets go!");
+});
+
+button.addEventListener("click", () => {
   if (typeof DeviceOrientationEvent.requestPermission === "function") {
     alert("yeah gonna check");
     DeviceOrientationEvent.requestPermission()
