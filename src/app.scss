@@ -18,14 +18,14 @@ html {
   border-radius: 20px;
   position: fixed;
   border: 2px solid white;
-  h1 {
+  h2 {
     font-size: 8vw;
     width: 100%;
     text-align: center;
     font-family: Arial;
   }
   @for $i from 0 through 255 {
-    &[data-orientation="#{$i}"] {
+    &[data-rotation="#{$i}"] {
       background-color: mix(black, green, $weight: (100% / 255 * $i));
     }
   }
