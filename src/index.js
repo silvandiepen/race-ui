@@ -1,8 +1,30 @@
 const pedal = document.querySelector(".pedal");
 const button = document.querySelector("#go");
-const socket = new WebSocket("wss://echo.websocket.org");
+const socketUrl = "wss://echo.websocket.org";
 
-socket.onopen = function(e) {
+let websocket = null;
+
+function initSocket() {
+  websocket = new WebSocket(socketUrl);
+  websocket.onopen = function(evt) {
+    startGame();
+  };
+  websocket.onclose = function(evt) {
+    // onClose(evt);
+  };
+  websocket.onmessage = function(evt) {
+    // onMessage(evt);
+  };
+  websocket.onerror = function(evt) {
+    // onError(evt);
+  };
+}
+
+function sendData(msg) {
+  websocket.send(msg);
+}
+
+function startGame() {
   button.addEventListener("click", () => {
     button.classList.add("button--clicked");
     if (typeof DeviceOrientationEvent.requestPermission === "function") {
@@ -17,24 +39,7 @@ socket.onopen = function(e) {
       startPedal();
     }
   });
-  //   socket.send("My name is John");
-};
-
-socket.onclose = function(event) {
-  if (event.wasClean) {
-    alert(
-      `[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`
-    );
-  } else {
-    // e.g. server process killed or network down
-    // event.code is usually 1006 in this case
-    alert("[close] Connection died");
-  }
-};
-
-socket.onerror = function(error) {
-  alert(`[error] ${error.message}`);
-};
+}
 
 function handleOrientation(e) {
   // Check if rotation is between 90 and 0 and Round it off to a number between 0 and 255.
@@ -45,12 +50,8 @@ function handleOrientation(e) {
   pedal.setAttribute("data-rotation", rotation);
   pedal.innerHTML = `<h2>${rotation}</h2>`;
   pedal.style.setProperty("--rotation", rotation);
-
-  // Do stuff with the new orientation data
+  sendData(rotation);
 }
-document.addEventListener("DOMContentLoaded", function() {
-  console.log("Yeah.. lets go!");
-});
 
 function startPedal() {
   //   setTimeout(() => {
@@ -71,3 +72,7 @@ function startPedal() {
     });
   }, 3000);
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+  initSocket();
+});
