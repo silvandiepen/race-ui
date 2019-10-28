@@ -1,18 +1,14 @@
-const paddle = document.querySelector(".paddle");
+const paddle = document.querySelector(".pedal");
 
 console.log(paddle);
 
 function handleOrientation(event) {
-  console.log("does it");
-  alert("yeah");
   const orientation = {
     absolute: event.absolute,
     alpha: event.alpha,
     beta: event.beta,
     gamma: event.gamma
   };
-
-  console.log(orientation);
 
   paddle.innerHTML = `<p>${orientation.beta}</p>`;
 
@@ -27,14 +23,6 @@ function handleOrientation(event) {
 
   // Do stuff with the new orientation data
 }
-if (window.DeviceOrientationEvent) {
-  // setup real compass thing, with event.alpha
-  document.body.innerHTML = "haz!";
-} else {
-  // setup some mouse following hack
-  document.body.innerHTML = "nope";
-}
-
 document.addEventListener("DOMContentLoaded", function() {
   console.log("Yeah.. lets go!  fdasfas");
   window.addEventListener("deviceorientation", handleOrientation, true);

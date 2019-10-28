@@ -6,12 +6,16 @@ html {
   color: #fff;
 }
 
-.paddle {
+.pedal {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100vw;
-  height: 100vh;
+  width: 50vw;
+  height: 50vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
   position: fixed;
   h1 {
     font-size: 8vw;
