@@ -1,8 +1,6 @@
 const pedal = document.querySelector(".pedal");
 const button = document.querySelector("#go");
-const socket = new WebSocket(
-  "wss://javascript.info/article/websocket/demo/hello"
-);
+const socket = new WebSocket("wss://echo.websocket.org");
 
 socket.onopen = function(e) {
   button.addEventListener("click", () => {
