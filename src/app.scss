@@ -36,10 +36,13 @@ html {
   }
   .initialized & {
     opacity: 1;
-    transform: translateY(calc((1% * var(--rotation)) - 50%));
+    transform: translateY(calc((1% * var(--rotation)) + 50%));
   }
   &__wrapper {
+    position: fixed;
     opacity: 0.25;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%) scale(2);
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
     .initialized & {
