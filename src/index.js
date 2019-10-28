@@ -15,8 +15,9 @@ function handleOrientation(event) {
       -1
   );
 
-  paddle.setAttribute("data-rotation", rotation);
-  paddle.innerHTML = `<h2>${rotation}</h2>`;
+  pedal.setAttribute("data-rotation", rotation);
+  pedal.innerHTML = `<h2>${rotation}</h2>`;
+  pedal.style.setProperty("--rotation", rotation);
 
   // Do stuff with the new orientation data
 }
