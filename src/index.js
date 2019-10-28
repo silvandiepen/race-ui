@@ -23,5 +23,15 @@ function handleOrientation(event) {
 }
 document.addEventListener("DOMContentLoaded", function() {
   console.log("Yeah.. lets go!  fdasfas");
-  window.addEventListener("deviceorientation", handleOrientation, true);
+  if (typeof DeviceOrientationEvent.requestPermission === "function") {
+    DeviceOrientationEvent.requestPermission()
+      .then(permissionState => {
+        if (permissionState === "granted") {
+          window.addEventListener("deviceorientation", handleOrientation, true);
+        }
+      })
+      .catch(console.error);
+  } else {
+    window.addEventListener("deviceorientation", handleOrientation, true);
+  }
 });
