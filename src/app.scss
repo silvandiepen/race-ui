@@ -156,7 +156,10 @@ html {
     ),
     radial-gradient(closest-side, #333, #111);
   border-radius: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(var(--scale, 0));
+  .initialized & {
+    --scale: 1;
+  }
   box-shadow: 1rem 0.5rem 2rem 0 black;
   &::after {
     content: "";
