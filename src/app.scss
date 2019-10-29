@@ -148,6 +148,7 @@ html {
   width: 50vmin;
   height: 50vmin;
   background-color: rgba(0, 0, 0, 1);
+  border: 0.5rem solid white;
   background-image: radial-gradient(
       closest-side,
       transparent calc(60% - 2px),
@@ -156,7 +157,8 @@ html {
     ),
     radial-gradient(closest-side, #333, #111);
   border-radius: 50%;
-  transform: translate(-50%, -50%) scale(var(--scale, 0));
+  transform: translate(-50%, 10%) scale(var(--scale, 0));
+  transition: transform 0.3s 0.3s ease-in-out;
   .initialized & {
     --scale: 1;
   }
@@ -172,9 +174,7 @@ html {
     border-radius: 50%;
     mix-blend-mode: screen;
     box-shadow: 0 0 2rem 0 black inset;
-    background: linear-gradient(to bottom, black, black),
-      radial-gradient(circle at 50%, black 50%, rgba(0, 0, 0, 0) 50%),
-      radial-gradient(transparent 60%, rgba(255, 255, 255, 1) 80%),
+    background: radial-gradient(transparent 60%, rgba(255, 255, 255, 1) 80%),
       radial-gradient(transparent 50%, rgba(255, 255, 255, 0.5)),
       radial-gradient(closest-side, rgba(255, 255, 255, 0.5), transparent),
       radial-gradient(closest-side, #111 50%, transparent 20%),
@@ -189,12 +189,12 @@ html {
           green,
           orange
         );
-    background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 50% 100%,
-      100% 100%, 100% 100%, 100% 100%;
+    background-size: 100% 100%, 100% 100%, 50% 100%, 100% 100%, 100% 100%,
+      100% 100%;
     background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat,
-      no-repeat, no-repeat, no-repeat;
-    background-position: center center, center center, 10% 10%, center center,
-      top right, center center, center center, center center;
+      no-repeat;
+    background-position: 10% 10%, center center, top right, center center,
+      center center, center center;
   }
   &::before {
     content: "";
@@ -207,7 +207,9 @@ html {
     background-color: black;
     border-radius: 50%;
     mix-blend-mode: screen;
-    background-image: linear-gradient(
+    background-image: linear-gradient(to bottom, black, black),
+      radial-gradient(circle at 50%, black 50%, rgba(0, 0, 0, 0) 50%),
+      linear-gradient(
         to right bottom,
         rgba(0, 0, 0, 0) calc(50% - 2px),
         rgba(255, 255, 255, 1) calc(50% - 2px),
