@@ -29,6 +29,7 @@ html {
     text-align: center;
     font-family: Staatliches, sans-serif;
     font-variant-numeric: tabular-nums;
+    text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.25);
   }
   @for $i from 0 through 100 {
     &[data-rotation="#{$i}"] {
@@ -137,6 +138,118 @@ html {
         --color: green;
         top: 75%;
       }
+    }
+  }
+}
+.accelerometer {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  width: 50vmin;
+  height: 50vmin;
+  background-color: rgba(0, 0, 0, 1);
+  background-image: radial-gradient(
+      closest-side,
+      transparent calc(60% - 2px),
+      #555 60%,
+      transparent 60%
+    ),
+    radial-gradient(closest-side, #333, #111);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 1rem 0.5rem 2rem 0 black;
+  &::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+    box-shadow: 0 0 2rem 0 black inset;
+    background: radial-gradient(transparent 60%, rgba(255, 255, 255, 1) 80%),
+      radial-gradient(transparent 50%, rgba(255, 255, 255, 0.5)),
+      radial-gradient(closest-side, rgba(255, 255, 255, 0.5), transparent),
+      radial-gradient(closest-side, #111 50%, transparent 20%),
+      radial-gradient(closest-side, transparent 70%, black 20%),
+      //   conic-gradient(orange 0% 10%, red 20% 37.5%, transparent 20% 62.5%, green);
+        conic-gradient(
+          orange,
+          red,
+          transparent,
+          transparent,
+          transparent,
+          green,
+          orange
+        );
+    background-size: 100% 100%, 100% 100%, 50% 100%, 100% 100%, 100% 100%,
+      100% 100%;
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat,
+      no-repeat;
+    background-position: 10% 10%, center center, top right, center center,
+      center center, center center;
+  }
+  &::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    z-index: 2;
+    top: 0;
+    background-color: black;
+    border-radius: 50%;
+    mix-blend-mode: screen;
+    background-image: linear-gradient(to bottom, black, black),
+      radial-gradient(circle at 50%, black 50%, rgba(0, 0, 0, 0) 50%),
+      linear-gradient(
+        to right bottom,
+        rgba(0, 0, 0, 0) calc(50% - 2px),
+        rgba(255, 255, 255, 1) calc(50% - 2px),
+        rgba(255, 255, 255, 1) calc(50% + 2px),
+        rgba(0, 0, 0, 0) calc(50% + 2px)
+      ),
+      linear-gradient(
+        to left bottom,
+        rgba(0, 0, 0, 0) calc(50% - 2px),
+        rgba(255, 255, 255, 1) calc(50% - 2px),
+        rgba(255, 255, 255, 1) calc(50% + 2px),
+        rgba(0, 0, 0, 0) calc(50% + 2px)
+      ),
+      radial-gradient(circle at 50%, black 50%, rgba(0, 255, 0, 0) 50%),
+      linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1)),
+      linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1));
+
+    background-size: 33.3% 33.3%, 90% 90%, 100%, 100%, 110% 110%, 100% 4px,
+      4px 100%;
+    background-position: center bottom, center center, center center,
+      center center, center center, center center, center center;
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat,
+      no-repeat, no-repeat;
+    transform: rotate(0deg);
+  }
+  &__pointer {
+    bottom: 50%;
+    left: 50%;
+    width: 4px;
+    position: absolute;
+    height: 50%;
+    z-index: 3;
+    border-radius: 0 0 4px 4px;
+    background-color: red;
+    transform-origin: 50% 100%;
+    transform: rotate(calc(-135deg + calc(270deg / 100 * var(--rotation, 0))));
+    &::before {
+      background-color: red;
+      display: block;
+      border-radius: 50%;
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      width: 1rem;
+      height: 1rem;
+      transform: translate(-50%, -50%);
     }
   }
 }

@@ -53,7 +53,7 @@ function handleOrientation(e) {
 
   pedal.setAttribute("data-rotation", rotation);
   pedal.innerHTML = `<h2>${rotation}</h2>`;
-  pedal.style.setProperty("--rotation", rotation);
+  document.body.style.setProperty("--rotation", rotation);
   sendData(rotation);
 }
 
@@ -73,7 +73,7 @@ function handleMouseMove(e) {
     );
     pedal.setAttribute("data-rotation", value);
     pedal.innerHTML = `<h2>${value}</h2>`;
-    pedal.style.setProperty("--rotation", value);
+    document.body.style.setProperty("--rotation", value);
     sendData(value);
   }
 }
