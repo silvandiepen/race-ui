@@ -166,6 +166,7 @@ html {
     left: 0;
     top: 0;
     border-radius: 50%;
+    mix-blend-mode: screen;
     box-shadow: 0 0 2rem 0 black inset;
     background: radial-gradient(transparent 60%, rgba(255, 255, 255, 1) 80%),
       radial-gradient(transparent 50%, rgba(255, 255, 255, 0.5)),
