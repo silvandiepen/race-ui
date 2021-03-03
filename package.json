@@ -18,7 +18,7 @@
   "author": "Sil van Diepen",
   "license": "ISC",
   "devDependencies": {
-    "pug": "^2.0.4",
+    "pug": "^3.0.1",
     "sass": "^1.23.1",
     "@babel/cli": "^7.6.4",
     "@babel/core": "^7.6.4",
